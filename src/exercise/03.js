@@ -1,5 +1,4 @@
 // Flexible Compound Components
-// http://localhost:3000/isolated/exercise/03.js
 
 import * as React from 'react'
 import {Switch} from '../switch'
