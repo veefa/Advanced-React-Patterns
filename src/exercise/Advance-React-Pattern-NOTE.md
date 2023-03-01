@@ -66,3 +66,7 @@ const getTitle = props => props.title;
 const getText = props => props.text;
 
 ```
+
+##### 05. State Reducer
+
+React state `reducer` is a pattern that involves passing a reducer function as a prop to a child component that manages its state using useState hook. The reducer function takes the current state and an action object as arguments, and returns the new state based on the action.
