@@ -1,5 +1,4 @@
 // Control Props
-// http://localhost:3000/isolated/exercise/06.js
 
 import * as React from 'react'
 import {Switch} from '../switch'
@@ -31,23 +30,24 @@ function toggleReducer(state, {type, initialState}) {
 function useToggle({
   initialOn = false,
   reducer = toggleReducer,
-  // 🐨 add an `onChange` prop.
-  // 🐨 add an `on` option here
-  // 💰 you can alias it to `controlledOn` to avoid "variable shadowing."
+  onChange,
+  on: controlledOn,
 } = {}) {
   const {current: initialState} = React.useRef({on: initialOn})
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  // 🐨 determine whether on is controlled and assign that to `onIsControlled`
-  // 💰 `controlledOn != null`
-
-  // 🐨 Replace the next line with `const on = ...` which should be `controlledOn` if
-  // `onIsControlled`, otherwise, it should be `state.on`.
-  const {on} = state
+  const onIsControlled = controlledOn != null;
+  const on = onIsControlled ? controlledOn : state.on
 
   // We want to call `onChange` any time we need to make a state change, but we
   // only want to call `dispatch` if `!onIsControlled` (otherwise we could get
   // unnecessary renders).
   // 🐨 To simplify things a bit, let's make a `dispatchWithOnChange` function
+  function dispatchWithOnChange(action) {
+
+    if (!onIsControlled) {
+      
+    }
+  };
   // right here. This will:
   // 1. accept an action
   // 2. if onIsControlled is false, call dispatch with that action

@@ -70,3 +70,54 @@ const getText = props => props.text;
 ##### 05. State Reducer
 
 React state `reducer` is a pattern that involves passing a reducer function as a prop to a child component that manages its state using useState hook. The reducer function takes the current state and an action object as arguments, and returns the new state based on the action.
+
+
+##### 06. Control Props
+
+React `Control Props pattern` is a design pattern used in React for managing the state of child components from a parent component. It involves passing down both the `value` and the `onChange handler` as props to child components, which allows the parent component to control the behavior of the child components
+
+```javascript 
+
+// Parent Component
+function Parent() {
+  const [value, setValue] = useState('');
+
+  function handleChange(event) {
+    setValue(event.target.value);
+  }
+
+  return (
+    <Child value={value} onChange={handleChange} />
+  );
+}
+
+// Child Component
+function Child(props) {
+  return (
+    <input
+      type="text"
+      value={props.value}
+      onChange={props.onChange}
+    />
+  );
+}
+
+```
+## Example
+
+```javascript
+function MyCapitalizedInput() {
+  const [capitalizedValue, setCapitalizedValue] = React.useState('')
+
+  return (
+    <input
+      value={capitalizedValue}
+      onChange={e => setCapitalizedValue(e.target.value.toUpperCase())}
+    />
+  )
+}
+
+```
+
+### SUMMARY
+In summary, the `state reducer pattern` is useful for managing complex state with multiple actions, while the `control props pattern` is useful for simple state management and for components that need to be controlled by their parent componen
